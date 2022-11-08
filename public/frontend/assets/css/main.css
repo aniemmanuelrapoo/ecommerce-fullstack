@@ -102,8 +102,8 @@ a:active,
 a:focus {
   text-decoration: none;
 }
-img[src="assets/images/blank.gif"] {
-  background: url("../images/ajax.gif") no-repeat scroll center center #ffffff;
+img[src="{{ asset('frontend/assets/images/blank.gif') }}"] {
+  background: url("{{asset('frontend/images/ajax.gif')}}") no-repeat scroll center center #ffffff;
 }
 
 .btn-upper {
