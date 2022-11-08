@@ -75,7 +75,7 @@
 
   <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
 
-{{-- <script>
+<script>
  @if(Session::has('message'))
  var type = "{{ Session::get('alert-type','info') }}"
  switch(type){
@@ -96,7 +96,7 @@
     break; 
  }
  @endif 
-</script> --}}
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
