@@ -30,17 +30,32 @@ $user = DB::table('users')->where('id',Auth::user()->id)->first();
          <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">Current Password <span> </span></label>
             <input type="password" id="current_password" name="oldpassword" class="form-control" >
+            @error('oldpassword')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">New Password <span> </span></label>
             <input type="password" id="password" name="password" class="form-control">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
 
         <div class="form-group">
             <label class="info-title" for="exampleInputEmail1">Confirm Password <span> </span></label>
             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control">
+            @error('password')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
          
