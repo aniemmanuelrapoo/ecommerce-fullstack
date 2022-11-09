@@ -42,16 +42,16 @@ Route::post('/update/change/password', [AdminProfileController::class, 'AdminUpd
 
 
 // User ALL Routes
-// Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-// 	$id = Auth::user()->id;
-//     $user = User::find($id);
-//     return view('dashboard',compact('user'));
-// })->name('dashboard');
+Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
+	$id = Auth::user()->id;
+    $user = User::find($id);
+    return view('dashboard',compact('user'));
+})->name('dashboard');
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
 
-// Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
+Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
 
 Route::post('/user/profile/store', [IndexController::class, 'UserProfileStore'])->name('user.profile.store');
 
@@ -66,9 +66,9 @@ Route::post('/user/password/update', [IndexController::class, 'UserPasswordUpdat
 
 
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
