@@ -11,10 +11,6 @@
 		<!-- Main content -->
 		<section class="content">
 		  <div class="row">
-			   
-		 
-
-			 
 
 
 <!--   ------------ Add Brand Page -------- -->
