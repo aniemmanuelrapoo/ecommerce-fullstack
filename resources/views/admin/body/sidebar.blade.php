@@ -1,3 +1,8 @@
+@php
+  $prefix = Request::route()->getPrefix();
+  $route = Route::current()->getName();
+@endphp
+
 <aside class="main-sidebar">
   <!-- sidebar-->
   <section class="sidebar">	
@@ -17,25 +22,48 @@
     <!-- sidebar menu-->
     <ul class="sidebar-menu" data-widget="tree">  
     
-  <li>
-        <a href="index.html">
+      <li class="{{ ($route == 'dashboard')? 'active':'' }}">
+        <a href="{{ url('admin/dashboard') }}">
           <i data-feather="pie-chart"></i>
     <span>Dashboard</span>
         </a>
-      </li>  
-  
-      <li class="treeview">
-        <a href="#">
-          <i data-feather="message-circle"></i>
-          <span>Brands</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-right pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li class=""><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
-        </ul>
       </li> 
+
+      @php
+      $brand = (auth()->guard('admin')->user()->brand == 1);
+      // $category = (auth()->guard('admin')->user()->category == 1);
+      // $product = (auth()->guard('admin')->user()->product == 1);
+      // $slider = (auth()->guard('admin')->user()->slider == 1);
+      // $coupons = (auth()->guard('admin')->user()->coupons == 1);
+      // $shipping = (auth()->guard('admin')->user()->shipping == 1);
+      // $blog = (auth()->guard('admin')->user()->blog == 1);
+      // $setting = (auth()->guard('admin')->user()->setting == 1);
+      // $returnorder = (auth()->guard('admin')->user()->returnorder == 1);
+      // $review = (auth()->guard('admin')->user()->review == 1);
+      // $orders = (auth()->guard('admin')->user()->orders == 1);
+      // $stock = (auth()->guard('admin')->user()->stock == 1);
+      // $reports = (auth()->guard('admin')->user()->reports == 1);
+      // $alluser = (auth()->guard('admin')->user()->alluser == 1);
+      // $adminuserrole = (auth()->guard('admin')->user()->adminuserrole == 1);
+
+      @endphp
+  
+      {{-- @if($brand == true)  --}}
+        <li class="treeview {{ ($prefix == '/brand')?'active':'' }}  ">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Brands</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ ($route == 'all.brand')? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
+            
+          </ul>
+        </li> 
+        {{-- @else --}}
+        {{-- @endif  --}}
     
       <li class="treeview">
         <a href="#">
