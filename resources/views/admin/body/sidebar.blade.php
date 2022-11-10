@@ -31,7 +31,7 @@
 
       @php
       $brand = (auth()->guard('admin')->user()->brand == 1);
-      // $category = (auth()->guard('admin')->user()->category == 1);
+      $category = (auth()->guard('admin')->user()->category == 1);
       // $product = (auth()->guard('admin')->user()->product == 1);
       // $slider = (auth()->guard('admin')->user()->slider == 1);
       // $coupons = (auth()->guard('admin')->user()->coupons == 1);
@@ -48,7 +48,7 @@
 
       @endphp
   
-      {{-- @if($brand == true)  --}}
+      @if($brand == true) 
         <li class="treeview {{ ($prefix == '/brand')?'active':'' }}  ">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -62,8 +62,28 @@
             
           </ul>
         </li> 
+        @else
+        @endif 
+
+        {{-- @if($category == true) --}}
+        <li class="treeview {{ ($prefix == '/category')?'active':'' }}  ">
+          <a href="#">
+            <i data-feather="mail"></i> <span>Category </span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+         <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>All Category</a></li>
+         <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
+        <li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
+
+
+          </ul>
+        </li>
+
         {{-- @else --}}
-        {{-- @endif  --}}
+        {{-- @endif --}}
     
       <li class="treeview">
         <a href="#">

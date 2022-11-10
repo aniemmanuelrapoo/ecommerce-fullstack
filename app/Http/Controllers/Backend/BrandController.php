@@ -58,49 +58,43 @@ class BrandController extends Controller
     	$old_img = $request->old_image;
 
     	if ($request->file('brand_image')) {
+				unlink($old_img);
+				$image = $request->file('brand_image');
+				$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+				Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
+				$save_url = 'upload/brand/'.$name_gen;
 
-    	unlink($old_img);
-    	$image = $request->file('brand_image');
-    	$name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-    	Image::make($image)->resize(300,300)->save('upload/brand/'.$name_gen);
-    	$save_url = 'upload/brand/'.$name_gen;
+				Brand::findOrFail($brand_id)->update([
+					'brand_name_en' => $request->brand_name_en,
+					'brand_name_hin' => $request->brand_name_hin,
+					'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
+					'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
+					'brand_image' => $save_url,
+				]);
 
-	Brand::findOrFail($brand_id)->update([
-		'brand_name_en' => $request->brand_name_en,
-		'brand_name_hin' => $request->brand_name_hin,
-		'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
-		'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
-		'brand_image' => $save_url,
+				$notification = array(
+				'message' => 'Brand Updated Successfully',
+				'alert-type' => 'info'
+			);
 
-    	]);
-
-	    $notification = array(
-			'message' => 'Brand Updated Successfully',
-			'alert-type' => 'info'
-		);
-
-		return redirect()->route('all.brand')->with($notification);
-
-    	}else{
+			return redirect()->route('all.brand')->with($notification);
+  	}else{
 
     	Brand::findOrFail($brand_id)->update([
-		'brand_name_en' => $request->brand_name_en,
-		'brand_name_hin' => $request->brand_name_hin,
-		'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
-		'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
-		 
-
-    	]);
+			'brand_name_en' => $request->brand_name_en,
+			'brand_name_hin' => $request->brand_name_hin,
+			'brand_slug_en' => strtolower(str_replace(' ', '-',$request->brand_name_en)),
+			'brand_slug_hin' => str_replace(' ', '-',$request->brand_name_hin),
+			]);
 
 	    $notification = array(
 			'message' => 'Brand Updated Successfully',
 			'alert-type' => 'info'
-		);
+			);
 
-		return redirect()->route('all.brand')->with($notification);
-
-    	} // end else 
-    } // end method 
+			return redirect()->route('all.brand')->with($notification);
+    } // end else 
+  } // end method 
 
 
 
