@@ -10,24 +10,23 @@ use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
-    public function index(){
-        return view('frontend.index');
-    }
+	public function index(){
+		return view('frontend.index');
+	}
 
-    public function UserLogout(){
-    	Auth::logout();
-    	return Redirect()->route('login');
-    }
+	public function UserLogout(){
+		Auth::logout();
+		return Redirect()->route('login');
+	}
 
+	public function UserProfile(){
+		$id = Auth::user()->id;
+		$user = User::find($id);
+		return view('frontend.profile.user_profile',compact('user'));
+	}
 
-    public function UserProfile(){
-    	$id = Auth::user()->id;
-    	$user = User::find($id);
-    	return view('frontend.profile.user_profile',compact('user'));
-    }
-
-    public function UserProfileStore(Request $request){
-        $data = User::find(Auth::user()->id);
+  public function UserProfileStore(Request $request){
+    $data = User::find(Auth::user()->id);
 		$data->name = $request->name;
 		$data->email = $request->email;
 		$data->phone = $request->phone;
@@ -48,17 +47,15 @@ class IndexController extends Controller
 		);
 
 		return redirect()->route('dashboard')->with($notification);
+  } // end method 
 
-    } // end method 
+	public function UserChangePassword(){
+		$id = Auth::user()->id;
+		$user = User::find($id);
+		return view('frontend.profile.change_password',compact('user'));
+	} // end method 
 
-    public function UserChangePassword(){
-    	$id = Auth::user()->id;
-    	$user = User::find($id);
-    	return view('frontend.profile.change_password',compact('user'));
-    } // end method 
-
-    public function UserPasswordUpdate(Request $request){
-
+  public function UserPasswordUpdate(Request $request){
 		$validateData = $request->validate([
 			'oldpassword' => 'required',
 			'password' => 'required|confirmed',
