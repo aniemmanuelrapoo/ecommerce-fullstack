@@ -48,7 +48,7 @@
 
       @endphp
   
-      @if($brand == true) 
+      {{-- @if($brand == true)  --}}
         <li class="treeview {{ ($prefix == '/brand')?'active':'' }}  ">
           <a href="#">
             <i data-feather="message-circle"></i>
@@ -62,8 +62,8 @@
             
           </ul>
         </li> 
-        @else
-        @endif 
+        {{-- @else --}}
+        {{-- @endif  --}}
 
         {{-- @if($category == true) --}}
         <li class="treeview {{ ($prefix == '/category')?'active':'' }}  ">
