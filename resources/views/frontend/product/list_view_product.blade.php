@@ -20,7 +20,7 @@
             @if ($product->discount_price == NULL)
             <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
             @else
-<div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+            <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
             @endif
             
             <!-- /.product-price -->
@@ -40,35 +40,27 @@
               <!-- /.action --> 
             </div>
             <!-- /.cart --> 
-            
           </div>
           <!-- /.product-info --> 
         </div>
         <!-- /.col --> 
       </div>
-
-
-
-         @php
+      @php
         $amount = $product->selling_price - $product->discount_price;
         $discount = ($amount/$product->selling_price) * 100;
-        @endphp    
-
-                      <!-- /.product-list-row -->
-                      <div>
-            @if ($product->discount_price == NULL)
-            <div class="tag new"><span>new</span></div>
-            @else
-            <div class="tag hot"><span>{{ round($discount) }}%</span></div>
-            @endif
-          </div>
-
-
-
-                    </div>
-                    <!-- /.product-list --> 
-                  </div>
-                  <!-- /.products --> 
-                </div>
-                <!-- /.category-product-inner -->
-    @endforeach
+      @endphp    
+        <!-- /.product-list-row -->
+      <div>
+        @if ($product->discount_price == NULL)
+        <div class="tag new"><span>new</span></div>
+        @else
+        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+        @endif
+      </div>
+    </div>
+    <!-- /.product-list --> 
+  </div>
+  <!-- /.products --> 
+</div>
+<!-- /.category-product-inner -->
+@endforeach

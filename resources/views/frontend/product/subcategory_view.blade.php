@@ -7,7 +7,6 @@ Subcategory Product
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  
 
-
 <div class="breadcrumb">
   <div class="container">
     <div class="breadcrumb-inner">
@@ -28,18 +27,15 @@ Subcategory Product
   <!-- /.container --> 
 </div>
 <!-- /.breadcrumb -->
+
+
 <div class="body-content outer-top-xs">
   <div class='container'>
     <div class='row'>
       <div class='col-md-3 sidebar'> 
-
         <!-- ===== == TOP NAVIGATION ======= ==== -->
         @include('frontend.common.vertical_menu')
         <!-- = ==== TOP NAVIGATION : END === ===== -->
-
-
-
-
         <div class="sidebar-module-container">
           <div class="sidebar-filter"> 
             <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
@@ -50,47 +46,30 @@ Subcategory Product
               </div>
               <div class="sidebar-widget-body">
                 <div class="accordion">
+                  @foreach($categories as $category)
+                  <div class="accordion-group">
+                    <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed"> 
+                      @if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif </a> </div>
+                    <!-- /.accordion-heading -->
+                    <div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
+                      <div class="accordion-inner">
+                        @php
+                          $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name_en','ASC')->get();
+                        @endphp 
 
-
- @foreach($categories as $category)
-	<div class="accordion-group">
-	<div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed"> 
-		@if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif </a> </div>
-	<!-- /.accordion-heading -->
-	<div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
-	  <div class="accordion-inner">
-	   
- @php
-  $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name_en','ASC')->get();
-  @endphp 
-
-   @foreach($subcategories as $subcategory)
-	    <ul>
-	      <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
-	      	@if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
-	      
-	    </ul>
-	@endforeach 
-
-
-	  </div>
-	  <!-- /.accordion-inner --> 
-	</div>
-	<!-- /.accordion-body --> 
-	</div>
-	<!-- /.accordion-group -->
-    @endforeach              
-                
-
-
-
-
-
-
-
-
-
-                  
+                        @foreach($subcategories as $subcategory)
+                          <ul>
+                            <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
+                              @if(session()->get('language') == 'hindi') {{ $subcategory->subcategory_name_hin }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>                            
+                          </ul>
+                        @endforeach 
+                      </div>
+                      <!-- /.accordion-inner --> 
+                    </div>
+                    <!-- /.accordion-body --> 
+                  </div>
+                  <!-- /.accordion-group -->
+                  @endforeach              
                 </div>
                 <!-- /.accordion --> 
               </div>
@@ -168,23 +147,14 @@ Subcategory Product
             <!-- /.sidebar-widget --> 
             <!-- ============================================== COMPARE: END ============================================== --> 
 
-
             <!-- == ====== PRODUCT TAGS ==== ======= -->
               @include('frontend.common.product_tags')
             <!-- /.sidebar-widget -->
              <!-- == ====== END PRODUCT TAGS ==== ======= -->
 
-
-
-
-
-
           <!----------- Testimonials------------->
-          
             @include('frontend.common.testimonials')
             <!-- == ========== Testimonials: END ======== ========= -->
-
-
             
             <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
           </div>
@@ -195,10 +165,7 @@ Subcategory Product
       <!-- /.sidebar -->
       <div class='col-md-9'> 
 
-
-
         <!-- == ==== SECTION – HERO === ====== -->
-        
         <div id="category" class="category-carousel hidden-xs">
           <div class="item">
             <div class="image"> <img src="{{ asset('frontend/assets/images/banners/cat-banner-1.jpg') }}" alt="" class="img-responsive"> </div>
@@ -214,14 +181,12 @@ Subcategory Product
           </div>
         </div>
       
-       @foreach($breadsubcat as $item)
-        
- <span class="badge badge-danger" style="background: #808080">{{ $item->category->category_name_en }} </span>
+        @foreach($breadsubcat as $item)        
+        <span class="badge badge-danger" style="background: #808080">{{ $item->category->category_name_en }} </span>
         @endforeach
-/
+
         @foreach($breadsubcat as $item)
- <span class="badge badge-danger" style="background: #FF0000">{{ $item->subcategory_name_en }} </span>
-        
+        <span class="badge badge-danger" style="background: #FF0000">{{ $item->subcategory_name_en }} </span>
         @endforeach  
      
         <div class="clearfix filters-container m-t-10">
@@ -289,52 +254,30 @@ Subcategory Product
           <!-- /.row --> 
         </div>
 
-
-<!--    //////////////////// START Product Grid View  ////////////// -->
+        <!--    //////////////////// START Product Grid View  ////////////// -->
 
         <div class="search-result-container ">
           <div id="myTabContent" class="tab-content category-list">
             <div class="tab-pane active " id="grid-container">
               <div class="category-product">
                 <div class="row" id="grid_view_product">
-
- 
-             @include('frontend.product.grid_view_product')
-
-
- 
+                  @include('frontend.product.grid_view_product')
                 </div>
                 <!-- /.row --> 
               </div>
               <!-- /.category-product --> 
-              
             </div>
             <!-- /.tab-pane -->
 
- <!--            //////////////////// END Product Grid View  ////////////// -->
+            <!-- //////////////////// END Product Grid View  ////////////// -->
 
-
-
-
- <!--            //////////////////// Product List View Start ////////////// -->
+            <!-- //////////////////// Product List View Start ////////////// -->
             
-
-
             <div class="tab-pane "  id="list-container">
               <div class="category-product" id="list_view_product">
+              @include('frontend.product.list_view_product')
 
-
-
-      @include('frontend.product.list_view_product')
-
-                
-
- <!--            //////////////////// Product List View END ////////////// -->
-
- 
-
-
-                
+              <!-- //////////////////// Product List View END ////////////// -->
               </div>
               <!-- /.category-product --> 
             </div>
@@ -353,26 +296,15 @@ Subcategory Product
             <!-- /.text-right --> 
             
           </div>
-          <!-- /.filters-container --> 
-          
+          <!-- /.filters-container -->           
         </div>
-        <!-- /.search-result-container --> 
-        
+        <!-- /.search-result-container -->         
       </div>
       <!-- /.col --> 
 
-
-
-
-    <div class="ajax-loadmore-product text-center" style="display: none;">
-      <img src="{{ asset('frontend/assets/images/loader.svg') }}" style="width: 120px; height: 120px;">
-
-    </div>
-
-
-
-
-
+      <div class="ajax-loadmore-product text-center" style="display: none;">
+        <img src="{{ asset('frontend/assets/images/loader.svg') }}" style="width: 120px; height: 120px;">
+      </div>
 
     </div>
     <!-- /.row --> 
@@ -418,10 +350,8 @@ Subcategory Product
     <!-- /.logo-slider --> 
     <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> </div>
   <!-- /.container --> 
-  
 </div>
 <!-- /.body-content --> 
-
 
 <script>
     function loadmoreProduct(page){
@@ -462,13 +392,7 @@ Subcategory Product
 
     });
 
-
-
 </script>
  
-
-
-
-
 @endsection
 

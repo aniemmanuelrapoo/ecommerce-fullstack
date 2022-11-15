@@ -43,9 +43,8 @@
                 
               </tr>
 
-
               @forelse($orders as $order)
-       <tr>
+              <tr>
                 <td class="col-md-1">
                   <label for=""> {{ $order->order_date }}</label>
                 </td>
@@ -55,7 +54,7 @@
                 </td>
 
 
-                 <td class="col-md-3">
+                <td class="col-md-3">
                   <label for=""> {{ $order->payment_method }}</label>
                 </td>
 
@@ -63,52 +62,27 @@
                   <label for=""> {{ $order->invoice_no }}</label>
                 </td>
 
-                 <td class="col-md-2">
+                <td class="col-md-2">
                   <label for=""> 
                     <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span>
-
-                    </label>
+                  </label>
                 </td>
 
-         <td class="col-md-1">
-          <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
-
-           <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px;"><i class="fa fa-download" style="color: white;"></i> Invoice </a>
-          
-        </td>
-                
+                <td class="col-md-1">
+                  <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
+                  <a target="_blank" href="{{ url('user/invoice_download/'.$order->id ) }}" class="btn btn-sm btn-danger" style="margin-top: 5px;"><i class="fa fa-download" style="color: white;"></i> Invoice </a>
+                </td>
               </tr>
 
               @empty
               <h2 class="text-danger">Order Not Found</h2>
-
               @endforelse
-
-
-
-
-
             </tbody>
-            
           </table>
-          
         </div>
-
-
-
-
-         
        </div> <!-- / end col md 8 -->
-
-		 
-
-		 
-			
 		</div> <!-- // end row -->
-		
 	</div>
-	
 </div>
  
-
 @endsection

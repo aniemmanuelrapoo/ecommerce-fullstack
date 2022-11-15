@@ -6,8 +6,7 @@
 <aside class="main-sidebar">
   <!-- sidebar-->
   <section class="sidebar">	
-  
-      <div class="user-profile">
+    <div class="user-profile">
     <div class="ulogo">
        <a href="index.html">
         <!-- logo for regular state and mobile devices -->
@@ -17,15 +16,14 @@
          </div>
       </a>
     </div>
-      </div>
+    </div>
     
     <!-- sidebar menu-->
     <ul class="sidebar-menu" data-widget="tree">  
-    
       <li class="{{ ($route == 'dashboard')? 'active':'' }}">
         <a href="{{ url('admin/dashboard') }}">
           <i data-feather="pie-chart"></i>
-    <span>Dashboard</span>
+          <span>Dashboard</span>
         </a>
       </li> 
 
@@ -49,19 +47,18 @@
       @endphp
   
       {{-- @if($brand == true)  --}}
-        <li class="treeview {{ ($prefix == '/brand')?'active':'' }}  ">
-          <a href="#">
-            <i data-feather="message-circle"></i>
-            <span>Brands</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ ($route == 'all.brand')? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
-            
-          </ul>
-        </li> 
+      <li class="treeview {{ ($prefix == '/brand')?'active':'' }}  ">
+        <a href="#">
+          <i data-feather="message-circle"></i>
+          <span>Brands</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-right pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="{{ ($route == 'all.brand')? 'active':'' }}"><a href="{{ route('all.brand') }}"><i class="ti-more"></i>All Brand</a></li>
+        </ul>
+      </li> 
         {{-- @else --}}
         {{-- @endif  --}}
 
@@ -73,13 +70,11 @@
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-         <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>All Category</a></li>
-         <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
-        <li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
-
-
-          </ul>
+        <ul class="treeview-menu">
+          <li class="{{ ($route == 'all.category')? 'active':'' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>All Category</a></li>
+          <li class="{{ ($route == 'all.subcategory')? 'active':'' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
+          <li class="{{ ($route == 'all.subsubcategory')? 'active':'' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
+        </ul>
         </li>
 
         {{-- @else --}}
@@ -133,7 +128,7 @@
         </ul>
       </li>
   
-  <li class="treeview">
+      <li class="treeview">
         <a href="#">
           <i data-feather="credit-card"></i>
           <span>Cards</span>
@@ -142,10 +137,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-    <li><a href="card_advanced.html"><i class="ti-more"></i>Advanced Cards</a></li>
-    <li><a href="card_basic.html"><i class="ti-more"></i>Basic Cards</a></li>
-    <li><a href="card_color.html"><i class="ti-more"></i>Cards Color</a></li>
-    </ul>
+          <li><a href="card_advanced.html"><i class="ti-more"></i>Advanced Cards</a></li>
+          <li><a href="card_basic.html"><i class="ti-more"></i>Basic Cards</a></li>
+          <li><a href="card_color.html"><i class="ti-more"></i>Cards Color</a></li>
+        </ul>
       </li>  
     
     </ul>

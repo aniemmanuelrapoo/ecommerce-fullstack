@@ -1,7 +1,7 @@
 <!-- <ul>
-	@foreach($products as $item)
-	<li> <img src="{{ asset($item->product_thambnail) }}" style="width: 30px; height: 30px;"> {{ $item->product_name_en }}  </li>
-	@endforeach
+@foreach($products as $item)
+<li> <img src="{{ asset($item->product_thambnail) }}" style="width: 30px; height: 30px;"> {{ $item->product_name_en }}  </li>
+@endforeach
 
 </ul> -->
 
@@ -71,17 +71,13 @@ body {
     <div class="row d-flex justify-content-center ">
         <div class="col-md-6">
             <div class="card">
-                
-
-            @foreach($products as $item)
-   <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug_en ) }}">
+                @foreach($products as $item)
+                <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug_en ) }}">
                 <div class="list border-bottom">  <img src="{{ asset($item->product_thambnail) }}" style="width: 30px; height: 30px;"> 
-                    
-   <div class="d-flex flex-column ml-3" style="margin-left: 10px;"> <span>{{ $item->product_name_en }} </span> <small> ${{ $item->selling_price }}</small> </div>
+                    <div class="d-flex flex-column ml-3" style="margin-left: 10px;"> <span>{{ $item->product_name_en }} </span> <small> ${{ $item->selling_price }}</small> </div>
                 </div>
                 </a>
                 @endforeach
-                
             </div>
         </div>
     </div>

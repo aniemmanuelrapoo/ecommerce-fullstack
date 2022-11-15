@@ -51,52 +51,49 @@
           <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
         </td>
         <td align="right">
-            <pre class="font" >
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
-              
-            </pre>
+          <pre class="font" >
+              EasyShop Head Office
+              Email:support@easylearningbd.com <br>
+              Mob: 1245454545 <br>
+              Dhaka 1207,Dhanmondi:#4 <br>
+
+          </pre>
         </td>
     </tr>
-
   </table>
-
 
   <table width="100%" style="background:white; padding:2px;""></table>
 
   <table width="100%" style="background: #F7F7F7; padding:0 5 0 5px;" class="font">
     <tr>
-        <td>
-          <p class="font" style="margin-left: 20px;">
-           <strong>Name:</strong> {{ $order->name }}<br>
-           <strong>Email:</strong> {{ $order->email }} <br>
-           <strong>Phone:</strong> {{ $order->phone }} <br>
+      <td>
+        <p class="font" style="margin-left: 20px;">
+          <strong>Name:</strong> {{ $order->name }}<br>
+          <strong>Email:</strong> {{ $order->email }} <br>
+          <strong>Phone:</strong> {{ $order->phone }} <br>
 
-           @php
-            $div = $order->division->division_name;
-            $dis = $order->district->district_name;
-            $state = $order->state->state_name;
-           @endphp
-            
-           <strong>Address:</strong> {{ $div }},{{ $dis }}.{{ $state }} <br>
-           <strong>Post Code:</strong> {{ $order->post_code }}
-         </p>
-        </td>
-        <td>
-          <p class="font">
-            <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no}}</h3>
-            Order Date: {{ $order->order_date }} <br>
-             Delivery Date: {{ $order->delivered_date }} <br>
-            Payment Type : {{ $order->payment_method }} </span>
-         </p>
-        </td>
+          @php
+          $div = $order->division->division_name;
+          $dis = $order->district->district_name;
+          $state = $order->state->state_name;
+          @endphp
+          
+          <strong>Address:</strong> {{ $div }},{{ $dis }}.{{ $state }} <br>
+          <strong>Post Code:</strong> {{ $order->post_code }}
+        </p>
+      </td>
+      <td>
+        <p class="font">
+          <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no}}</h3>
+          Order Date: {{ $order->order_date }} <br>
+            Delivery Date: {{ $order->delivered_date }} <br>
+          Payment Type : {{ $order->payment_method }} </span>
+        </p>
+      </td>
     </tr>
   </table>
   <br/>
-<h3>Products</h3>
-
+  <h3>Products</h3>
 
   <table width="100%">
     <thead style="background-color: green; color:#FFFFFF;">
@@ -112,7 +109,6 @@
       </tr>
     </thead>
     <tbody>
-
      @foreach($orderItem as $item)
       <tr class="font">
         <td align="center">
@@ -135,7 +131,6 @@
         <td align="center">${{ $item->price * $item->qty }} </td>
       </tr>
       @endforeach
-      
     </tbody>
   </table>
   <br>
@@ -152,8 +147,8 @@
     <p>Thanks For Buying Products..!!</p>
   </div>
   <div class="authority float-right mt-5">
-      <p>-----------------------------------</p>
-      <h5>Authority Signature:</h5>
-    </div>
+    <p>-----------------------------------</p>
+    <h5>Authority Signature:</h5>
+  </div>
 </body>
 </html>
