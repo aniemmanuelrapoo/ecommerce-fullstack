@@ -213,12 +213,12 @@ class ProductController extends Controller
     		'updated_at' => Carbon::now(),
     	]);
 
-         $notification = array(
+      $notification = array(
 			'message' => 'Product Image Thambnail Updated Successfully',
 			'alert-type' => 'info'
-		);
+			);
 
-		return redirect()->back()->with($notification);
+			return redirect()->back()->with($notification);
     } // end method
 
 
