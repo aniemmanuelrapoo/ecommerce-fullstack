@@ -6,22 +6,26 @@
       <div class="header-top-inner">
         <div class="cnt-account">
           <ul class="list-unstyled">
-            <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
-            <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
-            <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
-            <li>
+            <li><a href="#"><i class="icon fa fa-user"></i>
+            @if(session()->get('language') == 'hindi') Mi cuenta @else My Account @endif
+            </a></li>
+            <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
+            <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+            <li><a href="{{ route('checkout') }}"><i class="icon fa fa-check"></i>Checkout</a></li>
 
+            <li><a href="" type="button" data-toggle="modal" data-target="#ordertraking"><i class="icon fa fa-check"></i>Order Traking</a></li>
+
+            <li>
             @auth
             <a href="{{ route('login') }}"><i class="icon fa fa-user"></i>User Profile</a>
             @else
             <a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a>
             @endauth
-          </li>
+            </li>
           </ul>
         </div>
+
         <!-- /.cnt-account -->
-        
         <div class="cnt-block">
           <ul class="list-unstyled list-inline">
             <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">USD </span><b class="caret"></b></a>
@@ -31,11 +35,16 @@
                 <li><a href="#">GBP</a></li>
               </ul>
             </li>
-            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">English </span><b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">English</a></li>
-                <li><a href="#">French</a></li>
-                <li><a href="#">German</a></li>
+            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
+            @if(session()->get('language') == 'hindi') 
+            Idioma: Español @else Language @endif
+            </span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            @if(session()->get('language') == 'hindi')       
+            <li><a href="{{ route('english.language') }}">English</a></li>
+            @else
+            <li><a href="{{ route('hindi.language') }}">Español</a></li>
+            @endif      
               </ul>
             </li>
           </ul>
@@ -46,7 +55,7 @@
       </div>
       <!-- /.header-top-inner --> 
     </div>
-    <!-- /.container --> 
+    <!-- /.container -->  
   </div>
   <!-- /.header-top --> 
   <!-- ============================================== TOP MENU : END ============================================== -->
