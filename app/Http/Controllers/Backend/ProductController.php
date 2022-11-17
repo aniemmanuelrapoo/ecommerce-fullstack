@@ -27,9 +27,9 @@ class ProductController extends Controller
         ]);
 
         if ($files = $request->file('file')) {
-            $destinationPath = 'upload/pdf'; // upload path
-            $digitalItem = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath,$digitalItem);
+					$destinationPath = 'upload/pdf'; // upload path
+					$digitalItem = date('YmdHis') . "." . $files->getClientOriginalExtension();
+					$files->move($destinationPath,$digitalItem);
         }
 
         $image = $request->file('product_thambnail');
