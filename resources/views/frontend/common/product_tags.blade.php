@@ -10,14 +10,14 @@
       @if(session()->get('language') == 'hindi') 
 
       @foreach($tags_hin as $tag)
-      <a class="item active" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_hin) }}">
+      <a class="item active" title="tags" href="{{ url('product/tag/'.$tag->product_tags_hin) }}">
         {{ str_replace(',',' ',$tag->product_tags_hin)  }}</a> 
       @endforeach
 
       @else 
 
       @foreach($tags_en as $tag)
-      <a class="item active" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_en) }}">
+      <a class="item active" title="tags" href="{{ url('product/tag/'.$tag->product_tags_en) }}">
         {{ str_replace(',',' ',$tag->product_tags_en)  }}</a> 
       @endforeach
       

@@ -11,7 +11,7 @@ Tag Wise Product
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
         <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
+        <li class='active'>Tags</li>
       </ul>
     </div>
     <!-- /.breadcrumb-inner --> 
