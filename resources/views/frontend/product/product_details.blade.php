@@ -6,7 +6,7 @@
 @endsection
 
 <style>
-	.checked {
+.checked {
   color: orange;
 }
 </style>

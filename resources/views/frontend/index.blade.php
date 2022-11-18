@@ -299,7 +299,7 @@ Home Easy Online Shop
               <div class="product-slider">
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme" data-item="4">
                   @php
-                    $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderBy('id','DESC')->get(); 
+                    $catwiseProduct = App\Models\Product::where('category_id',$category->id)->where('status',1)->orderBy('id','DESC')->get(); 
                   @endphp
                   
                   @forelse($catwiseProduct as $product)
