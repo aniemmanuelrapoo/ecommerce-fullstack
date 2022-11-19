@@ -158,7 +158,7 @@
           <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
             <div class="nav-outer">
               <ul class="nav navbar-nav">
-                <li class="active dropdown yamm-fw"> <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                <li class="active"> <a href="{{ url('/') }}">
                   @if(session()->get('language') == 'hindi') Hogar @else Home @endif
                   </a> </li>
 

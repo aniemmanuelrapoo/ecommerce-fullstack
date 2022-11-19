@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\User\CartPageController;
 use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\WishlistController;
 use App\Models\User;
@@ -56,7 +57,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('dashboard',compact('user'));
 })->name('dashboard');
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('homepage');
 Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
 
 Route::get('/user/profile', [IndexController::class, 'UserProfile'])->name('user.profile');
